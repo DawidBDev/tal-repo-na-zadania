@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Python do matury rozszerzonej z informatyki: 12 lekcji po 60 minut, 120 zadań, notatniki Jupyter i rozwiązania zadań CKE 2024 i 2025.">
+    <meta name="theme-color" content="#071525">
+    <title>Python — programowanie do matury rozszerzonej</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-shell" id="app">
+        <header class="topbar">
+            <button class="icon-button" id="menu-button" type="button" aria-label="Otwórz spis lekcji" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+            </button>
+
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">Py</span>
+                <div class="brand-copy">
+                    <span class="brand-title">Python · matura rozszerzona</span>
+                    <span class="brand-subtitle" id="header-location">Strona tytułowa</span>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="icon-button" id="help-button" type="button" aria-label="Pokaż pomoc dotyczącą sterowania">
+                    <span aria-hidden="true">?</span>
+                </button>
+                <button class="icon-button" id="fullscreen-button" type="button" aria-label="Włącz tryb pełnoekranowy">
+                    <span aria-hidden="true">⛶</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="stage" id="stage" tabindex="-1">
+            <article class="slide" id="slide" aria-live="polite"></article>
+        </main>
+
+        <nav class="vertical-rail" id="vertical-rail" aria-label="Elementy bieżącej lekcji"></nav>
+
+        <footer class="deck-footer">
+            <div class="navigation-controls" aria-label="Sterowanie prezentacją">
+                <button class="nav-button horizontal" id="previous-lesson" type="button" aria-label="Poprzednia lekcja">
+                    <span aria-hidden="true">←</span>
+                    <span class="nav-label">Lekcja</span>
+                </button>
+                <button class="nav-button vertical" id="previous-section" type="button" aria-label="Poprzedni element lekcji">
+                    <span aria-hidden="true">↑</span>
+                </button>
+                <button class="nav-button vertical" id="next-section" type="button" aria-label="Następny element lekcji">
+                    <span aria-hidden="true">↓</span>
+                </button>
+                <button class="nav-button horizontal" id="next-lesson" type="button" aria-label="Następna lekcja">
+                    <span class="nav-label">Lekcja</span>
+                    <span aria-hidden="true">→</span>
+                </button>
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-track" aria-hidden="true">
+                    <span class="progress-value" id="progress-value"></span>
+                </div>
+                <span class="slide-counter" id="slide-counter">Start</span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="lesson-drawer" id="lesson-drawer" aria-label="Spis lekcji" aria-hidden="true" inert>
+        <div class="drawer-header">
+            <div>
+                <span class="eyebrow">Nawigacja</span>
+                <h2>Spis lekcji</h2>
+            </div>
+            <button class="icon-button" id="close-menu-button" type="button" aria-label="Zamknij spis lekcji">×</button>
+        </div>
+
+        <label class="search-field">
+            <span class="sr-only">Szukaj lekcji</span>
+            <input id="lesson-search" type="search" placeholder="Szukaj tematu…" autocomplete="off">
+        </label>
+
+        <nav class="lesson-list" id="lesson-list" aria-label="Lista lekcji"></nav>
+
+        <div class="drawer-footer">
+            <button class="secondary-button" id="print-button" type="button">Drukuj lub zapisz jako PDF</button>
+            <a class="secondary-button" href="kurs-python.zip" download>Pobierz kurs z danymi</a>
+            <p>12 spotkań po 60 minut. Teoria, 96 zadań na lekcji, 24 zadania po lekcji oraz rozwiązania odsłaniane na żądanie. Treść zgodna z kartami Jupyter.</p>
+        </div>
+    </aside>
+
+    <dialog class="help-dialog" id="help-dialog">
+        <div class="dialog-heading">
+            <div>
+                <span class="eyebrow">Sterowanie</span>
+                <h2>Nawigacja po prezentacji</h2>
+            </div>
+            <button class="icon-button" id="close-help-button" type="button" aria-label="Zamknij pomoc">×</button>
+        </div>
+
+        <div class="shortcut-grid">
+            <div><kbd>←</kbd><span>poprzednia lekcja</span></div>
+            <div><kbd>→</kbd><span>następna lekcja</span></div>
+            <div><kbd>↑</kbd><span>poprzedni element</span></div>
+            <div><kbd>↓</kbd><span>następny element</span></div>
+            <div><kbd>Home</kbd><span>strona tytułowa</span></div>
+            <div><kbd>F</kbd><span>pełny ekran</span></div>
+            <div><kbd>M</kbd><span>spis lekcji</span></div>
+            <div><kbd>?</kbd><span>ta pomoc</span></div>
+        </div>
+
+        <p class="touch-hint">Na ekranie dotykowym przesuń palcem w lewo lub prawo, aby zmienić lekcję. Długie slajdy przewijaj pionowo; elementy zmieniaj przyciskami ↑ ↓. Rozwiązania odsłaniasz przyciskiem na ich slajdzie. Kod uruchamiaj w pobranym notatniku Jupyter — strona go nie wykonuje.</p>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript>
+        <div class="noscript-message">Ta prezentacja wymaga włączonej obsługi JavaScript.</div>
+    </noscript>
+
+    <script src="slides-data.js" defer></script>
+    <script src="app.js" defer></script>
+</body>
+</html>
